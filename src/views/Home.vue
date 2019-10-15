@@ -10,7 +10,7 @@
   import Connexion from "../components/Connexion";
 
   export default {
-    name: 'home',
+    name: 'Home',
     components: {
       Connexion
     }
