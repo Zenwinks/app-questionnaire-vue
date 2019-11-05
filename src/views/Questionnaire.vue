@@ -3,7 +3,7 @@
     <h3>Bienvenue {{prenom}} {{nom}} de la société {{nomSociete}}</h3>
     <div id="question-component">
       <span v-if="error" class="error">Veuillez sélectionner une réponse !</span>
-      <question :question="questions[counter]" @choice="choice = $event"></question>
+      <question :question="questions[counter]" :choice="choice" @choice="choice = $event"></question>
       <b-button v-if="canNextQuestion" block variant="primary" class="connectButton" @click="nextQuestion"><b>Question
         suivante</b>
       </b-button>

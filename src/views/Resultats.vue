@@ -3,11 +3,14 @@
     <h3>Bienvenue {{prenom}} {{nom}} de la société {{societe}}</h3>
     <div class="results">
       <div v-for="(res, index) in results" class="resultat" :key="index">
-        <span class="question">{{res.question.question}}</span>&nbsp;
-        <span class="reponse">{{res.choice}}</span>&nbsp;
+        <span class="question">{{res.question.question}}</span>&nbsp; <br>
+        <span class="reponse">Votre réponse : <i>{{res.choice}}</i></span>&nbsp;
+        <i v-if="res.choice !== res.question.bonneReponse" class="fas fa-times"></i>
+        <i v-else class="fas fa-check"></i>
+        <font-awesome-icon icon="check-square"></font-awesome-icon>
         <span v-if="res.choice !== res.question.bonneReponse" class="loose">Perdu ! La bonne réponse était : {{res.question.bonneReponse}}</span>
       </div>
-      <span>Score {{score}}/{{results.length}}</span>
+      <span class="score">Score {{score}}/{{results.length}}</span>
     </div>
   </div>
 </template>
@@ -53,8 +56,20 @@
     grid-column: 2/4;
   }
 
+  .resultat {
+    margin: 20px 0 0 20px;
+  }
+
+  .question {
+    font-weight: bold;
+  }
+
   .loose {
     color: red;
     font-weight: bold;
+  }
+
+  .score {
+
   }
 </style>

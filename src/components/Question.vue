@@ -15,12 +15,8 @@
   export default {
     name: "Question",
     props: {
-      question: Object
-    },
-    data() {
-      return {
-        choice: ''
-      }
+      question: Object,
+      choice: String
     },
     watch: {
       choice() {
