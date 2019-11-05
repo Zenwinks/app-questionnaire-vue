@@ -1,34 +1,62 @@
 {
   "questions": [
     {
-      "question": "Question 1 ?",
+      "question": "Qui est le président de la République Française ?",
       "type": "radio",
       "choix": [
-        "Steeve",
-        "Paul",
-        "Pierre"
+        "François Hollande",
+        "Nicolas Sarkozy",
+        "Vladimir Poutine",
+        "Emmanuel Macron",
+        "Donald Trump"
       ],
-      "bonneReponse": "Steeve"
+      "bonneReponse": "Emmanuel Macron"
     },
     {
-      "question": "Question 2 ?",
+      "question": "De quelle couleur est le cheval blanc d'Henri IV ?",
       "type": "radio",
       "choix": [
-        "Léo",
-        "Théo",
-        "Axel"
+        "Vert",
+        "Noir",
+        "Blanc",
+        "Rouge",
+        "Bleu",
+        "Marron"
       ],
-      "bonneReponse": "Léo"
+      "bonneReponse": "Blanc"
     },
     {
-      "question": "Question 3 ?",
+      "question": "Pain au chocolat ou chocolatine ?",
       "type": "radio",
       "choix": [
-        "Léo",
-        "Théo",
-        "Axel"
+        "Pain au chocolat",
+        "Chocolatine"
       ],
-      "bonneReponse": "Axel"
+      "bonneReponse": "Pain au chocolat"
+    },
+    {
+      "question": "Qui est le meilleur Joker ?",
+      "type": "radio",
+      "choix": [
+        "Heath Ledger",
+        "Jack Nicholson",
+        "Jared Leto",
+        "Joaquin Phoenix"
+      ],
+      "bonneReponse": "Heath Ledger"
+    },
+    {
+      "question": "Qui a créé Vue JS ?",
+      "type": "radio",
+      "choix": [
+        "Mark Zuckerberg",
+        "Wang Shu",
+        "Bill Gates",
+        "Evan You",
+        "Antoine Griezmann",
+        "Zhou Qi"
+      ],
+      "bonneReponse": "Evan You"
     }
   ]
 }

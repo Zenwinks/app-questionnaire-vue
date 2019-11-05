@@ -2,15 +2,15 @@
   <div id="questionnaire">
     <h3>Bienvenue {{prenom}} {{nom}} de la société {{societe}}</h3>
     <div class="results">
-      <div v-for="(res, index) in results" class="resultat" :key="index">
+      <div v-for="(res, index) in results" v-if="res.question" class="resultat" :key="index">
         <span class="question">{{res.question.question}}</span>&nbsp; <br>
         <span class="reponse">Votre réponse : <i>{{res.choice}}</i></span>&nbsp;
-        <i v-if="res.choice !== res.question.bonneReponse" class="fas fa-times"></i>
-        <i v-else class="fas fa-check"></i>
         <font-awesome-icon icon="check-square"></font-awesome-icon>
         <span v-if="res.choice !== res.question.bonneReponse" class="loose">Perdu ! La bonne réponse était : {{res.question.bonneReponse}}</span>
       </div>
-      <span class="score">Score {{score}}/{{results.length}}</span>
+      <span class="score">Score : {{score}}/{{results.length}}</span>
+      <b-button block variant="primary" class="go-to-accueil" @click="navToAccueil"><b>Accueil</b>
+      </b-button>
     </div>
   </div>
 </template>
@@ -31,7 +31,13 @@
     mounted() {
 
     },
-    methods: {}
+    methods: {
+      navToAccueil() {
+        this.$router.push({
+          path: '/'
+        })
+      }
+    }
   }
 </script>
 
@@ -70,6 +76,10 @@
   }
 
   .score {
-
+    font-weight: bold;
+    font-size: 30px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
   }
 </style>
