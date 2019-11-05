@@ -2,6 +2,7 @@
   <div id="questionnaire">
     <h3>Bienvenue {{prenom}} {{nom}} de la société {{nomSociete}}</h3>
     <div id="question-component">
+      <span v-if="error" class="error">Veuillez sélectionner une réponse !</span>
       <question :question="questions[counter]" @choice="choice = $event"></question>
       <b-button v-if="canNextQuestion" block variant="primary" class="connectButton" @click="nextQuestion"><b>Question
         suivante</b>
@@ -32,7 +33,8 @@
         choice: "",
         results: [],
         first: true,
-        score: 0
+        score: 0,
+        error: false
       }
     },
     created() {
@@ -40,39 +42,49 @@
     },
     methods: {
       nextQuestion() {
-        if (this.first) {
-          this.first = false
+        if (this.choice !== "" || this.first) {
+          this.error = false
+          if (this.first) {
+            this.first = false
+          } else {
+            let res = {
+              'question': this.questions[this.counter],
+              'choice': this.choice
+            }
+            this.results.push(res)
+            this.isGoodAnswer()
+            this.counter++
+          }
+          if (!this.questions[this.counter + 1]) {
+            this.canNextQuestion = false
+          }
+          this.choice = ""
         } else {
+          this.error = true
+        }
+      },
+      testFinish() {
+        if (this.choice !== "") {
+          this.error = false
           let res = {
             'question': this.questions[this.counter],
             'choice': this.choice
           }
           this.results.push(res)
           this.isGoodAnswer()
-          this.counter++
+          this.$router.push({
+            path: 'resultats',
+            query: {
+              results: this.results,
+              nom: this.nom,
+              prenom: this.prenom,
+              societe: this.nomSociete,
+              score: this.score
+            }
+          })
+        } else {
+          this.error = true
         }
-        if (!this.questions[this.counter + 1]) {
-          this.canNextQuestion = false
-        }
-        this.choice = ""
-      },
-      testFinish() {
-        let res = {
-          'question': this.questions[this.counter],
-          'choice': this.choice
-        }
-        this.results.push(res)
-        this.isGoodAnswer()
-        this.$router.push({
-          path: 'resultats',
-          query: {
-            results: this.results,
-            nom: this.nom,
-            prenom: this.prenom,
-            societe: this.nomSociete,
-            score: this.score
-          }
-        })
       },
       isGoodAnswer() {
         if (this.questions[this.counter].bonneReponse === this.choice) {
@@ -106,5 +118,12 @@
 
   .connectButton {
     height: 20%;
+  }
+
+  .error {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
   }
 </style>
