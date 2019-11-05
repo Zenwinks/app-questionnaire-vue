@@ -30,7 +30,9 @@
         counter: 0,
         canNextQuestion: true,
         choice: "",
-        first: true
+        results: [],
+        first: true,
+        score: 0
       }
     },
     created() {
@@ -41,14 +43,41 @@
         if (this.first) {
           this.first = false
         } else {
+          let res = {
+            'question': this.questions[this.counter],
+            'choice': this.choice
+          }
+          this.results.push(res)
+          this.isGoodAnswer()
           this.counter++
         }
         if (!this.questions[this.counter + 1]) {
           this.canNextQuestion = false
         }
+        this.choice = ""
       },
       testFinish() {
-
+        let res = {
+          'question': this.questions[this.counter],
+          'choice': this.choice
+        }
+        this.results.push(res)
+        this.isGoodAnswer()
+        this.$router.push({
+          path: 'resultats',
+          query: {
+            results: this.results,
+            nom: this.nom,
+            prenom: this.prenom,
+            societe: this.nomSociete,
+            score: this.score
+          }
+        })
+      },
+      isGoodAnswer() {
+        if (this.questions[this.counter].bonneReponse === this.choice) {
+          this.score++
+        }
       }
     }
   }

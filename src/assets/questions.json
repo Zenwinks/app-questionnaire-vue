@@ -7,7 +7,8 @@
         "Steeve",
         "Paul",
         "Pierre"
-      ]
+      ],
+      "bonneReponse": "Steeve"
     },
     {
       "question": "Question 2 ?",
@@ -16,7 +17,8 @@
         "Léo",
         "Théo",
         "Axel"
-      ]
+      ],
+      "bonneReponse": "Léo"
     },
     {
       "question": "Question 3 ?",
@@ -26,27 +28,8 @@
         "choix 2",
         "choix 3",
         "choix 4"
-      ]
-    },
-    {
-      "question": "Question 4 ?",
-      "type": "radio",
-      "choix": [
-        "choix 1",
-        "choix 2",
-        "choix 3",
-        "choix 4"
-      ]
-    },
-    {
-      "question": "Question 5 ?",
-      "type": "radio",
-      "choix": [
-        "choix 1",
-        "choix 2",
-        "choix 3",
-        "choix 4"
-      ]
+      ],
+      "bonneReponse": "choix 1"
     }
   ]
 }
